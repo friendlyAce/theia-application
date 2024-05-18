@@ -18,6 +18,10 @@
     "lerna": "2.4.0"
   },
   "workspaces": [
-    "hello-world", "vigl-editor", "browser-app", "electron-app"
+    "angular-widget",
+    "hello-world",
+    "vigl-editor",
+    "browser-app",
+    "electron-app"
   ]
 }
