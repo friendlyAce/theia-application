@@ -23,13 +23,20 @@
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "build": "tsc",
+    "build": "yarn run deploy-angular-app-to-public && tsc",
     "watch": "tsc -w",
-    "test": "jest --config configs/jest.config.ts"
+    "test": "jest --config configs/jest.config.ts",
+    "deploy-angular-app-to-public-old": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"lib/browser/public/theia-angular-app/\"",
+    "deploy-angular-app-to-public": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"../browser-app/lib/frontend/public/theia-angular-app\""
   },
   "theiaExtensions": [
     {
       "frontend": "lib/browser/demo-widget/demo-widget-frontend-module"
     }
-  ]
+  ],
+  "theia": {
+    "frontend": {
+      "public": "lib/browser/public/theia-angular-app/browser/"
+    }
+  }
 }

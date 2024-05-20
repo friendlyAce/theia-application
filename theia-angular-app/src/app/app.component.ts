@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import 'zone.js'; // Important if used via main.js in theia
 
 @Component({
   selector: 'app-root',
