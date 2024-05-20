@@ -34,7 +34,7 @@ export class AngularWidget extends BaseWidget {
 
         // Create script entry for the angular main.js
         const script = document.createElement('script');
-        // After a lot of trying, the location for the browser-app sources need to be copied to: /theia-hello-world-extension\browser-app\lib\public\theia-angular-app\browser\main.js
+        // After a lot of trying, the location for the browser-app sources need to be copied to: browser-app\lib\public\theia-angular-app\browser\main.js
         // TODO figure out if there is a better way, how can i expose these resources to the browser/electron app?
         // TODO figure out, package.json entry doesn't seem to do anything, i need to manually deploy sources into browser app
         // "theia": {
