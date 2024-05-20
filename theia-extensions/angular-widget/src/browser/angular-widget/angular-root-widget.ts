@@ -7,7 +7,8 @@ import { Command, CommandRegistry } from '@theia/core/lib/common/command';
 @injectable()
 export class AngularWidget extends BaseWidget {
     public static readonly ID = 'angular-widget';
-    public static readonly LABEL = 'Open Angular Widget v12'; // TODO figure out on how to auto compile and reload, similar to angular serve or watch process, instead of manually compiling, re-starting, re-building & double checking with increasing 'v version' if properly deployed
+    public static readonly LABEL = 'Open Angular Widget v13';
+    // TODO figure out on how to auto compile and reload, similar to angular serve or watch process, instead of manually compiling, re-starting, re-building & double checking with increasing 'v version' if widget has been properly deployed
 
     @postConstruct()
     public init(): void {
@@ -26,6 +27,8 @@ export class AngularWidget extends BaseWidget {
         // Create a container for the angular app
         const container = document.createElement('div');
         container.id = 'theia-angular-app-container';
+        container.style.width = '100%';
+        container.style.height = '100%';
         this.node.appendChild(container);
 
         // Create root node for the ng root component of the app
@@ -34,7 +37,9 @@ export class AngularWidget extends BaseWidget {
 
         // Create script entry for the angular main.js
         const script = document.createElement('script');
-        // After a lot of trying, the location for the browser-app sources need to be copied to: browser-app\lib\public\theia-angular-app\browser\main.js
+        // After a lot of trying, the location for the browser-app sources need to be copied to:
+        // - browser:  theia-extensions\browser-app\lib\frontend\public\theia-angular-app\browser\[main.js, etc. ng /dist output]
+        // - electron: theia-extensions\electron-app\lib\frontend\public\theia-angular-app\browser\*
         // TODO figure out if there is a better way, how can i expose these resources to the browser/electron app?
         // TODO figure out, package.json entry doesn't seem to do anything, i need to manually deploy sources into browser app
         // "theia": {

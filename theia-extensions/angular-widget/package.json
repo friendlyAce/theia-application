@@ -23,15 +23,16 @@
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "build": "yarn run deploy-angular-app-to-public && tsc",
+    "build": "yarn run deploy.local && tsc",
     "watch": "tsc -w",
     "test": "jest --config configs/jest.config.ts",
-    "deploy-angular-app-to-public-old": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"lib/browser/public/theia-angular-app/\"",
-    "deploy-angular-app-to-public": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"../browser-app/lib/frontend/public/theia-angular-app\""
+    "deploy.local": "yarn run deploy.ng-app-to-browser && yarn run deploy.ng-app-to-electron",
+    "deploy.ng-app-to-browser": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"../browser-app/lib/frontend/public/theia-angular-app\"",
+    "deploy.ng-app-to-electron": "xcopy /I /E /Y \"../../theia-angular-app/dist/theia-angular-app\" \"../electron-app/lib/frontend/public/theia-angular-app\""
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/demo-widget/demo-widget-frontend-module"
+      "frontend": "lib/browser/angular-widget/demo-widget-frontend-module"
     }
   ],
   "theia": {
